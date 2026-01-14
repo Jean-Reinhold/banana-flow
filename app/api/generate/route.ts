@@ -1,9 +1,16 @@
 /**
  * Gemini API Route Handler
  * 
- * This Next.js API route acts as a proxy to the Google Gemini API.
+ * This Next.js API route acts as a stateless proxy to the Google Gemini API.
+ * 
+ * SECURITY NOTES:
+ * - The API key is passed from the client and NOT stored on the server
+ * - No logging of API keys or request content
+ * - No persistent storage of any kind
+ * - The key is sent directly to Google's API and nowhere else
+ * 
  * It handles:
- * - API key authentication (passed from client, not stored on server)
+ * - API key authentication (passed from client per-request)
  * - CORS (handled automatically by Next.js)
  * - Error formatting
  * 

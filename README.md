@@ -54,7 +54,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ### Configuration
 
-Enter your **Gemini API Key** directly in the app's top-right input field. The key is stored locally in your browser and never sent to any server except Google's API.
+Enter your **Gemini API Key** directly in the app's top-right input field.
+
+> **🔒 Security Note:** Your API key is stored **only in your browser's localStorage**. It is never stored in the codebase, on any server, or transmitted anywhere except directly to Google's Gemini API. The Next.js API route acts as a simple proxy and does not log or store your key.
 
 ---
 
@@ -121,15 +123,21 @@ banana-flow/
 
 ## 💾 Data Persistence
 
-BananaFlow stores data locally in your browser:
+BananaFlow stores data **locally in your browser only**:
 
 | Data | Storage | Description |
 |------|---------|-------------|
-| **API Key** | `localStorage` | Your Gemini API key (encrypted by browser) |
+| **API Key** | `localStorage` | Your Gemini API key (client-side only) |
 | **Workflow** | `localStorage` | Current workflow state (nodes, edges, theme) |
 | **History** | `IndexedDB` | Generated images with timestamps (supports large files) |
 
-> **Note:** All data stays in your browser. Nothing is sent to external servers except API calls to Google Gemini.
+### 🔐 Privacy & Security
+
+- **No API keys in codebase**: Your API key is never stored in the source code
+- **No server-side storage**: The Next.js API route is stateless and doesn't log anything
+- **Browser-only storage**: All your data stays in your browser's local storage
+- **Direct API calls**: Your key is sent only to Google's Gemini API endpoints
+- **Open source**: You can audit the entire codebase to verify this
 
 ---
 

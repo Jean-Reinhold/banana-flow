@@ -276,11 +276,15 @@ export const clearWorkflow = (): void => {
 };
 
 // ============================================================================
-// API Key Storage
+// API Key Storage (Client-Side Only)
 // ============================================================================
 
 /**
  * Saves the API key to localStorage.
+ * 
+ * SECURITY NOTE: The API key is stored ONLY in the user's browser.
+ * It is never sent to our servers or stored in the codebase.
+ * The key is passed directly to Google's API on each request.
  * 
  * @param apiKey - The Gemini API key to save
  */
